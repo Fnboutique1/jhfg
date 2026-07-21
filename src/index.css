@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+
+    /* FN Formation Custom Colors */
+    --fn-dark: #1B4332;
+    --fn-accent: #D00000;
+    --fn-green: #2D6A4F;
+    --fn-cream: #F5F0E8;
+    --fn-card: #FAF7F2;
+    --fn-text: #1A1A1A;
+    --fn-muted: #6B5B4F;
+    --fn-whatsapp: #25D366;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    font-family: 'Inter', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--fn-text);
+    background: var(--fn-cream);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Cormorant Garamond', 'Hind Siliguri', Georgia, serif;
+  }
+
+  .section-dark {
+    background-color: var(--fn-dark);
+    color: white;
+  }
+
+  .section-light {
+    background-color: var(--fn-cream);
+    color: var(--fn-text);
+  }
+
+  .text-muted-light {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-3.5 rounded-full font-semibold text-sm tracking-wider uppercase transition-all duration-300;
+    background-color: var(--fn-accent);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #B00000;
+    transform: scale(1.02);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-3.5 rounded-full font-semibold text-sm tracking-wider uppercase transition-all duration-300 border;
+    background: transparent;
+    border-color: currentColor;
+    color: inherit;
+  }
+
+  .btn-secondary:hover {
+    background: currentColor;
+    background-color: white;
+    color: var(--fn-dark);
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm tracking-wider uppercase transition-all duration-300;
+    background-color: var(--fn-whatsapp);
+    color: white;
+  }
+
+  .btn-whatsapp:hover {
+    background-color: #128C7E;
+    transform: scale(1.02);
+  }
+
+  .card-light {
+    @apply rounded-2xl p-8 transition-all duration-500;
+    background-color: var(--fn-card);
+    box-shadow: 0 4px 24px rgba(27, 67, 50, 0.08);
+  }
+
+  .card-light:hover {
+    box-shadow: 0 8px 32px rgba(27, 67, 50, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .card-dark {
+    @apply rounded-2xl p-8 transition-all duration-500;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .card-dark:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Marquee Animation */
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 30s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 30s linear infinite;
+}
+
+.animate-bounce-down {
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
+/* YouTube overlay to prevent context menu */
+.youtube-container {
+  position: relative;
+}
+
+.youtube-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  pointer-events: none;
+}
